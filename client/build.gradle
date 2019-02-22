@@ -9,13 +9,13 @@ android {
         client {
             keyAlias 'client'
             keyPassword 'client'
-            storeFile file('/Users/zayankov/Documents/MobDev/client.keystore')
+            storeFile new File(rootDir, 'client.keystore')
             storePassword 'client'
         }
         service {
             keyAlias 'service'
             keyPassword 'service'
-            storeFile file('/Users/zayankov/Documents/MobDev/service.keystore')
+            storeFile new File(rootDir, 'service.keystore')
             storePassword 'service'
         }
     }
@@ -32,7 +32,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.client
+            signingConfig signingConfigs.service
         }
     }
 }
