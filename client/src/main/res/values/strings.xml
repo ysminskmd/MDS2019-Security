@@ -1,4 +1,7 @@
 <resources>
     <string name="long_app_name">Mob Dev Client</string>
     <string name="short_app_name">MDClient</string>
+    <string name="start_activity">Start activity</string>
+    <string name="query_provider">Query provider</string>
+    <string name="insert_row">Insert row</string>
 </resources>
