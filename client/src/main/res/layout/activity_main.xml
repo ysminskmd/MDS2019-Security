@@ -47,6 +47,14 @@
             android:textAllCaps="true"
             android:textStyle="bold"/>
 
+    <Button
+            android:id="@+id/install"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/security_provider"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
     <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"

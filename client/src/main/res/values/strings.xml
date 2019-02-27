@@ -6,5 +6,8 @@
     <string name="insert_row">Insert row</string>
     <string name="send_broadcast">Send broadcast</string>
     <string name="local_broadcast">Local broadcast</string>
+    <string name="security_provider">Security provider</string>
     <string name="client_receiver">This is client receiver</string>
+    <string name="provider_installed">Provider is up-to-date, app can make secure network calls.</string>
+    <string name="provider_installer_not_available">All HTTP communication is considered to be vulnerable</string>
 </resources>
