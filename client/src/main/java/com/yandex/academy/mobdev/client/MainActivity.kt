@@ -1,12 +1,18 @@
 package com.yandex.academy.mobdev.client
 
-import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+
+private const val SERVICE_ID = "com.yandex.academy.mobdev.service"
+private const val SERVICE_PACKAGE = "com.yandex.academy.mobdev.service"
+
+private const val RECEIVER_ACTION = "com.yandex.academy.mobdev.client.receiver"
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,11 +26,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = MainAdapter(this, null)
         list.adapter = adapter
 
+        val manager = LocalBroadcastManager.getInstance(this)
+        manager.registerReceiver(MainReceiver(), IntentFilter(RECEIVER_ACTION))
+
         activity.setOnClickListener {
-            startActivity(Intent().setComponent(ComponentName(
-                "com.yandex.academy.mobdev.service",
-                "com.yandex.academy.mobdev.service.MainActivity"
-            )))
+            startActivity(Intent().setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainActivity"))
         }
 
         query.setOnClickListener {
@@ -34,6 +40,15 @@ class MainActivity : AppCompatActivity() {
 
         insert.setOnClickListener {
             contentResolver.insert(providerUri, ContentValues())
+        }
+
+        send.setOnClickListener {
+            val intent = Intent().setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainReceiver")
+            sendBroadcast(intent, "com.yandex.academy.mobdev.client.receiver")
+        }
+
+        local.setOnClickListener {
+            manager.sendBroadcast(Intent(RECEIVER_ACTION))
         }
     }
 }

@@ -31,6 +31,22 @@
             android:textAllCaps="true"
             android:textStyle="bold"/>
 
+    <Button
+            android:id="@+id/send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/send_broadcast"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
+    <Button
+            android:id="@+id/local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/local_broadcast"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
     <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"

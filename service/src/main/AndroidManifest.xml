@@ -3,6 +3,8 @@
           xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="com.yandex.academy.mobdev.client.receiver" />
+
     <permission android:name="com.yandex.academy.mobdev.service.activity"
                 android:protectionLevel="signature" />
 
@@ -10,6 +12,9 @@
                 android:protectionLevel="signature" />
 
     <permission android:name="com.yandex.academy.mobdev.service.provider.write"
+                android:protectionLevel="signature" />
+
+    <permission android:name="com.yandex.academy.mobdev.service.receiver"
                 android:protectionLevel="signature" />
 
     <application android:allowBackup="true"
@@ -23,11 +28,15 @@
                   android:exported="true"
                   android:permission="com.yandex.academy.mobdev.service.activity" />
         
-        <provider android:authorities="com.yandex.academy.mobdev.service.provider"
+        <provider android:name=".MainProvider"
                   android:exported="true"
-                  android:name=".MainProvider"
+                  android:authorities="com.yandex.academy.mobdev.service.provider"
                   android:readPermission="com.yandex.academy.mobdev.service.provider.read"
                   android:writePermission="com.yandex.academy.mobdev.service.provider.write" />
+
+        <receiver android:name=".MainReceiver"
+                  android:exported="true"
+                  android:permission="com.yandex.academy.mobdev.service.receiver"/>
     </application>
 
 </manifest>

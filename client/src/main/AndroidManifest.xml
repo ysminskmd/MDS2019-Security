@@ -6,6 +6,10 @@
     <uses-permission android:name="com.yandex.academy.mobdev.service.activity" />
     <uses-permission android:name="com.yandex.academy.mobdev.service.provider.read" />
     <uses-permission android:name="com.yandex.academy.mobdev.service.provider.write" />
+    <uses-permission android:name="com.yandex.academy.mobdev.service.receiver" />
+
+    <permission android:name="com.yandex.academy.mobdev.client.receiver"
+                android:protectionLevel="signature" />
 
     <application android:allowBackup="true"
                  android:icon="@mipmap/ic_launcher"

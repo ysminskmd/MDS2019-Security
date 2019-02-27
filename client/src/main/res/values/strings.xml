@@ -4,4 +4,7 @@
     <string name="start_activity">Start activity</string>
     <string name="query_provider">Query provider</string>
     <string name="insert_row">Insert row</string>
+    <string name="send_broadcast">Send broadcast</string>
+    <string name="local_broadcast">Local broadcast</string>
+    <string name="client_receiver">This is client receiver</string>
 </resources>
