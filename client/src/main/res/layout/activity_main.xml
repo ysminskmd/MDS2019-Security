@@ -15,43 +15,67 @@
             android:textAllCaps="true"
             android:textStyle="bold"/>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+                android:id="@+id/query"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/query_provider"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+        <Button
+                android:id="@+id/insert"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/insert_row"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+                android:id="@+id/send"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/send_broadcast"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+        <Button
+                android:id="@+id/local"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/local_broadcast"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+    </LinearLayout>
+
     <Button
-            android:id="@+id/query"
+            android:id="@+id/update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/query_provider"
+            android:text="@string/update_provider"
             android:textAllCaps="true"
             android:textStyle="bold"/>
 
     <Button
-            android:id="@+id/insert"
+            android:id="@+id/lookup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/insert_row"
-            android:textAllCaps="true"
-            android:textStyle="bold"/>
-
-    <Button
-            android:id="@+id/send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/send_broadcast"
-            android:textAllCaps="true"
-            android:textStyle="bold"/>
-
-    <Button
-            android:id="@+id/local"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/local_broadcast"
-            android:textAllCaps="true"
-            android:textStyle="bold"/>
-
-    <Button
-            android:id="@+id/install"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/security_provider"
+            android:text="@string/lookup_uri"
             android:textAllCaps="true"
             android:textStyle="bold"/>
 

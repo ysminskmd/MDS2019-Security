@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         val manager = LocalBroadcastManager.getInstance(this)
         manager.registerReceiver(MainReceiver(), IntentFilter(RECEIVER_ACTION))
 
+        val client = SafetyNetClient(this)
+
         activity.setOnClickListener {
             val message = getMessage()
             startActivity(Intent()
@@ -65,8 +67,12 @@ class MainActivity : AppCompatActivity() {
             manager.sendBroadcast(Intent(RECEIVER_ACTION))
         }
 
-        install.setOnClickListener {
+        update.setOnClickListener {
             ProviderInstaller.installIfNeededAsync(this, providerInstallListener)
+        }
+
+        lookup.setOnClickListener {
+            client.lookupUri("http://www.yandex.by/")
         }
     }
 
