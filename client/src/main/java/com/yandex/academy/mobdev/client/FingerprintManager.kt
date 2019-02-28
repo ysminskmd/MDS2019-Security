@@ -12,10 +12,9 @@ class FingerprintManager(
 
     fun authenticate() {
         if (manager.hasEnrolledFingerprints() && manager.isHardwareDetected) {
+            Toast.makeText(context, "Authentication requested", Toast.LENGTH_SHORT).show()
             manager.authenticate(null, 0, null, this, null)
         } else {
-            Toast.makeText(context, "Authentication requested", Toast.LENGTH_SHORT).show()
-
             onSucceeded()
         }
     }
