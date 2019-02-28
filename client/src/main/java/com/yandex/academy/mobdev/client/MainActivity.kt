@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.FileProvider
 import android.support.v4.content.LocalBroadcastManager
@@ -41,14 +42,12 @@ class MainActivity : AppCompatActivity() {
         val client = SafetyNetClient(this)
 
         activity.setOnClickListener {
-            FingerprintManager(this) {
-                val message = getMessage()
-                startActivity(Intent()
-                    .setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainActivity")
-                    .setDataAndType(message, contentResolver.getType(message))
-                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                )
-            }.authenticate()
+            val message = getMessage()
+            startActivity(Intent()
+                .setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainActivity")
+                .setDataAndType(message, contentResolver.getType(message))
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            )
         }
 
         query.setOnClickListener {
@@ -68,7 +67,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         local.setOnClickListener {
-            broadcastManager.sendBroadcast(Intent(RECEIVER_ACTION))
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                BiometricPrompt(this) {
+                    broadcastManager.sendBroadcast(Intent(RECEIVER_ACTION))
+                }.authenticate()
+            } else {
+                FingerprintManager(this) {
+                    broadcastManager.sendBroadcast(Intent(RECEIVER_ACTION))
+                }.authenticate()
+            }
         }
 
         update.setOnClickListener {
