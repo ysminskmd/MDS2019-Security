@@ -8,6 +8,8 @@
     <uses-permission android:name="com.yandex.academy.mobdev.service.provider.write" />
     <uses-permission android:name="com.yandex.academy.mobdev.service.receiver" />
 
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
     <permission android:name="com.yandex.academy.mobdev.client.receiver"
                 android:protectionLevel="signature" />
 

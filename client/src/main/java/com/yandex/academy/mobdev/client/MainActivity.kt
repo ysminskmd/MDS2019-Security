@@ -35,18 +35,20 @@ class MainActivity : AppCompatActivity() {
         val adapter = MainAdapter(this, null)
         list.adapter = adapter
 
-        val manager = LocalBroadcastManager.getInstance(this)
-        manager.registerReceiver(MainReceiver(), IntentFilter(RECEIVER_ACTION))
+        val broadcastManager = LocalBroadcastManager.getInstance(this)
+        broadcastManager.registerReceiver(MainReceiver(), IntentFilter(RECEIVER_ACTION))
 
         val client = SafetyNetClient(this)
 
         activity.setOnClickListener {
-            val message = getMessage()
-            startActivity(Intent()
-                .setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainActivity")
-                .setDataAndType(message, contentResolver.getType(message))
-                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            )
+            FingerprintManager(this) {
+                val message = getMessage()
+                startActivity(Intent()
+                    .setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainActivity")
+                    .setDataAndType(message, contentResolver.getType(message))
+                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                )
+            }.authenticate()
         }
 
         query.setOnClickListener {
@@ -64,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         local.setOnClickListener {
-            manager.sendBroadcast(Intent(RECEIVER_ACTION))
+            broadcastManager.sendBroadcast(Intent(RECEIVER_ACTION))
         }
 
         update.setOnClickListener {
