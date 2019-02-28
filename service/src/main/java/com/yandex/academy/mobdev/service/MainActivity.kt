@@ -9,5 +9,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setTitle(R.string.long_app_name)
+
+        intent.data?.let { data ->
+            contentResolver.openInputStream(data)?.use { inputStream ->
+                Toast.makeText(this, String(inputStream.readBytes()), Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

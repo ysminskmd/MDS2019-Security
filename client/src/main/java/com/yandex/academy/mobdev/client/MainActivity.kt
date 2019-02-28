@@ -5,9 +5,11 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.content.FileProvider
 import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 
 private const val SERVICE_ID = "com.yandex.academy.mobdev.service"
 private const val SERVICE_PACKAGE = "com.yandex.academy.mobdev.service"
@@ -30,7 +32,12 @@ class MainActivity : AppCompatActivity() {
         manager.registerReceiver(MainReceiver(), IntentFilter(RECEIVER_ACTION))
 
         activity.setOnClickListener {
-            startActivity(Intent().setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainActivity"))
+            val message = getMessage()
+            startActivity(Intent()
+                .setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainActivity")
+                .setDataAndType(message, contentResolver.getType(message))
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            )
         }
 
         query.setOnClickListener {
@@ -50,5 +57,14 @@ class MainActivity : AppCompatActivity() {
         local.setOnClickListener {
             manager.sendBroadcast(Intent(RECEIVER_ACTION))
         }
+    }
+
+    private fun getMessage(): Uri {
+        val messagesDir = File(filesDir, "messages")
+        messagesDir.mkdirs()
+        val messageFile = File(messagesDir, "message.txt")
+        messageFile.writeText("This is secret message from client activity")
+        val authority = "com.yandex.academy.mobdev.client.provider"
+        return FileProvider.getUriForFile(this, authority, messageFile)
     }
 }
