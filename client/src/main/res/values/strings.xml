@@ -8,10 +8,20 @@
     <string name="local_broadcast">Local broadcast</string>
     <string name="update_provider">Update provider</string>
     <string name="lookup_uri">Lookup uri</string>
+    <string name="enabled_verify_apps">Is Verify Apps enabled</string>
+    <string name="enable_verify_apps">Enable Verify Apps</string>
+    <string name="list_harmful">List harmful apps</string>
 
     <string name="client_receiver">This is client receiver</string>
     <string name="provider_installed">Provider is up-to-date, app can make secure network calls.</string>
     <string name="provider_installer_not_available">All HTTP communication is considered to be vulnerable</string>
     <string name="no_threats_found">No threats found.</string>
     <string name="threats_found">Threats found!</string>
+    <string name="verify_apps_enabled">The Verify Apps feature is enabled.</string>
+    <string name="verify_apps_disabled">The Verify Apps feature is disabled.</string>
+    <string name="user_gave_consent">The user gave consent to enable the Verify Apps feature.</string>
+    <string name="user_did_not_give_consent">The user didn\'t give consent to enable the Verify Apps feature.</string>
+    <string name="harmful_apps">Potentially harmful apps are installed!</string>
+    <string name="no_harmful_apps">There are no known potentially harmful apps installed.</string>
+    <string name="general_error">A general error occurred.</string>
 </resources>

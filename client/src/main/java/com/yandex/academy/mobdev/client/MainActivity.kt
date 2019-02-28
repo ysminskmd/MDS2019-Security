@@ -74,6 +74,18 @@ class MainActivity : AppCompatActivity() {
         lookup.setOnClickListener {
             client.lookupUri("http://www.yandex.by/")
         }
+
+        enabled.setOnClickListener {
+            client.isVerifyAppsEnabled()
+        }
+
+        enable.setOnClickListener {
+            client.enableVerifyApps()
+        }
+
+        harmful.setOnClickListener {
+            client.listHarmfulApps()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

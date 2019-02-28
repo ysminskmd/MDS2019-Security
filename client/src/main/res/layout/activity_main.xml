@@ -79,6 +79,39 @@
             android:textAllCaps="true"
             android:textStyle="bold"/>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+                android:id="@+id/enabled"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/enabled_verify_apps"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+        <Button
+                android:id="@+id/enable"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/enable_verify_apps"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+        <Button
+                android:id="@+id/harmful"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/list_harmful"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+    </LinearLayout>
+
     <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
