@@ -21,14 +21,31 @@ class SafetyNetClient(private val activity: Activity) {
             SafeBrowsingThreat.TYPE_POTENTIALLY_HARMFUL_APPLICATION,
             SafeBrowsingThreat.TYPE_SOCIAL_ENGINEERING
         )
-            .addOnSuccessListener(activity) { sbResponse ->
+            .addOnSuccessListener { sbResponse ->
                 if (sbResponse.detectedThreats.isEmpty()) {
                     Toast.makeText(activity, R.string.no_threats_found, Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(activity, R.string.threats_found, Toast.LENGTH_SHORT).show()
                 }
             }
-            .addOnFailureListener(activity) { e: Exception ->
+            .addOnFailureListener { e ->
+                val message = if (e is ApiException) {
+                    CommonStatusCodes.getStatusCodeString(e.statusCode)
+                } else {
+                    e.message
+                }
+                Toast.makeText(activity, "Error: $message", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    fun verifyWithCaptcha(onSuccess: () -> Unit) {
+        client.verifyWithRecaptcha("6Lc7iJQUAAAAAHGtWeRadg-pEEL22egbDiYXOUq_")
+            .addOnSuccessListener { response ->
+                if (response.tokenResult?.isNotEmpty() == true) {
+                    onSuccess()
+                }
+            }
+            .addOnFailureListener { e ->
                 val message = if (e is ApiException) {
                     CommonStatusCodes.getStatusCodeString(e.statusCode)
                 } else {

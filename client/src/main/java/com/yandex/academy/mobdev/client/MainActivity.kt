@@ -61,8 +61,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         send.setOnClickListener {
-            val intent = Intent().setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainReceiver")
-            sendBroadcast(intent, "com.yandex.academy.mobdev.client.receiver")
+            client.verifyWithCaptcha {
+                val intent = Intent().setClassName(SERVICE_ID, "$SERVICE_PACKAGE.MainReceiver")
+                sendBroadcast(intent, "com.yandex.academy.mobdev.client.receiver")
+            }
         }
 
         local.setOnClickListener {
